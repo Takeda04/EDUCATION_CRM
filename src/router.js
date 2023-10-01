@@ -7,7 +7,6 @@ const Profile = lazy(() => import("./pages/Profile"));
 const Statistics = lazy(() => import("./pages/Statistic"));
 const Students = lazy(() => import("./pages/Students"));
 const Teachers = lazy(() => import("./pages/Teachers"));
-const SinglePage = lazy(() => import("./pages/SinglePage"));
 const Settings = lazy(() => import("./pages/Settings.jsx"));
 
 export const routes = [
@@ -38,10 +37,6 @@ export const routes = [
   {
     path: "/teachers",
     Component: Teachers,
-  },
-  {
-    path: "student:id",
-    Component: SinglePage 
   },
   {
     path: "/settings",

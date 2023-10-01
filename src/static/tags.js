@@ -54,7 +54,7 @@ export const Title = styled("h1")(() => ({
 
 export const Description = styled("p")(() => ({
   fontWeight: 400,
-  fontSize: "0.875rem",
+  fontSize: "0.950rem",
   lineHeight: 1.429,
   letterSpacing: "0.15px",
 }));

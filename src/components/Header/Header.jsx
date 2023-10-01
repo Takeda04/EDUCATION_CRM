@@ -21,13 +21,13 @@ import {
 //Import Assests
 
 import { MdOutlineClass, MdSettings } from "react-icons/md";
-import { BiLayer, BiLogOut, BiUser } from "react-icons/bi";
+import {  BiLogOut, BiUser } from "react-icons/bi";
 import { PiStudentBold, PiNewspaperClippingBold} from "react-icons/pi"
-import { HiOutlineMail } from "react-icons/hi";
-import { AiOutlineHeart } from "react-icons/ai";
 import {ImStatsBars} from "react-icons/im"
 import { FaChalkboardTeacher} from "react-icons/fa"
 import { Link, useNavigate } from "react-router-dom";
+
+import { news_list } from "../../pages/News";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -86,7 +86,7 @@ const Header = () => {
             onClick={() => navigate("/news")}
           >
             <IconButton color="inherit">
-              <Badge badgeContent={noma ? 4 : 0} color='primary'>
+              <Badge badgeContent={news_list ? news_list.length : 0} color='primary'>
                 <PiNewspaperClippingBold className="text-[1.4rem]" />
               </Badge>
             </IconButton>
@@ -110,6 +110,10 @@ const Header = () => {
             aria-expanded={open ? "true" : undefined}
           >
             <Avatar
+            sx={{
+              width: 60,
+              height: 60
+            }}
               alt="Ava"
               src="https://trolologuy.github.io/me.png"
               className="border-2"
