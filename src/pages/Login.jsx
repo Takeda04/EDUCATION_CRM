@@ -16,8 +16,8 @@ import { useNavigate } from "react-router-dom";
 import { toastError, toastSuccess } from "../toast/toast";
 
 //firebase
+import { auth } from "../utils/firebase"
 
-import {getAuth} from 'firebase/auth'
 const defaultTheme = createTheme();
 
 export default function Login() {
@@ -28,6 +28,21 @@ export default function Login() {
     const data = new FormData(event.currentTarget);
     const email = data.get('email');
     const  password= data.get("password")
+
+    try {
+      const request = auth.signInWithEmailAndPassword(email, password);
+      request;
+      request.then((result) => {
+        let accessToken = result.user.multiFactor.user.uid;
+        localStorage.setItem('accessToken', accessToken);
+        toastSuccess("User Signed In Successfully");
+        navigate('/')
+        // console.log(result);
+      });
+    } catch (error) {
+      toastError(error.message);
+      event.preventDefault(false);
+    }
 
    
   };

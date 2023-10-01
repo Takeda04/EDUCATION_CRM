@@ -3,14 +3,15 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { toastError, toastSuccess } from '../toast/toast';
+import { useNavigate } from 'react-router-dom';
+import {auth} from "../utils/firebase"
 
 
 
@@ -18,13 +19,30 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 const defaultTheme = createTheme();
 
 export default function Register() {
+
+
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    
+     const email= data.get('email');
+     const password= data.get('password');
+
+     try {
+      const request = auth.createUserWithEmailAndPassword(email, password);
+      request;
+      request.then((result) => {
+        let accessToken = result.user.multiFactor.user.uid;
+        localStorage.setItem('accessToken', accessToken);
+        toastSuccess("User Signed Up Successfully");
+        navigate('/')
+        console.log(result);
+      });
+    } catch (error) {
+      toastError(error.message);
+      event.preventDefault(false);
+    }
   };
 
   return (
