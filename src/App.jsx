@@ -1,10 +1,11 @@
+import Header from "./components/Header/Header";
 import { useStateContext } from "./context/ContextProvider";
 
 function App() {
-  const { setCurrentMode, currentMode } = useStateContext();
+  // const { setCurrentMode, currentMode } = useStateContext();
   return (
     <div>
-      <h1>Salom</h1>
+      <Header/>
     </div>
   );
 }
