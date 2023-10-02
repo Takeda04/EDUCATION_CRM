@@ -43,8 +43,6 @@ export default function Login() {
       toastError(error.message);
       event.preventDefault(false);
     }
-
-   
   };
 
   return (

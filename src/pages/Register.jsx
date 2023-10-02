@@ -1,42 +1,40 @@
-import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { toastError, toastSuccess } from '../toast/toast';
-import { useNavigate } from 'react-router-dom';
-import {auth} from "../utils/firebase"
-
-
-
+import * as React from "react";
+import {
+  Box,
+  Grid,
+  Link,
+  TextField,
+  CssBaseline,
+  Button,
+  Avatar,
+  Typography,
+  Container,
+  createTheme,
+  ThemeProvider,
+} from "@mui/material";
+import { toastError, toastSuccess } from "../toast/toast";
+import { useNavigate } from "react-router-dom";
+import { auth } from "../utils/firebase";
 
 const defaultTheme = createTheme();
 
 export default function Register() {
-
-
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    
-     const email= data.get('email');
-     const password= data.get('password');
 
-     try {
+    const email = data.get("email");
+    const password = data.get("password");
+
+    try {
       const request = auth.createUserWithEmailAndPassword(email, password);
       request;
       request.then((result) => {
         let accessToken = result.user.multiFactor.user.uid;
-        localStorage.setItem('accessToken', accessToken);
+        localStorage.setItem("accessToken", accessToken);
         toastSuccess("User Signed Up Successfully");
-        navigate('/')
+        navigate("/");
         console.log(result);
       });
     } catch (error) {
@@ -52,25 +50,30 @@ export default function Register() {
         <Box
           sx={{
             marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
           }}
         >
           <Avatar
-  sx={{
-    width: 100, // Optionally adjust the width
-    height: 100, // Optionally adjust the height
-  }}
-  alt="Ava"
-  src="https://trolologuy.github.io/me.png"
-  className="border-4"
-/>
+            sx={{
+              width: 100, // Optionally adjust the width
+              height: 100, // Optionally adjust the height
+            }}
+            alt="Ava"
+            src="https://trolologuy.github.io/me.png"
+            className="border-4"
+          />
 
           <Typography component="h1" variant="h5">
             Register
           </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <Box
+            component="form"
+            noValidate
+            onSubmit={handleSubmit}
+            sx={{ mt: 3 }}
+          >
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -93,6 +96,7 @@ export default function Register() {
                   autoComplete="family-name"
                 />
               </Grid>
+
               <Grid item xs={12}>
                 <TextField
                   required
