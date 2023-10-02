@@ -19,6 +19,7 @@ import { auth } from "../utils/firebase";
 const defaultTheme = createTheme();
 
 export default function Register() {
+
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -31,15 +32,17 @@ export default function Register() {
       const request = auth.createUserWithEmailAndPassword(email, password);
       request;
       request.then((result) => {
-        let accessToken = result.user.multiFactor.user.uid;
+        let accessToken = result.user.multiFactor.user.accessToken;
         localStorage.setItem("accessToken", accessToken);
         toastSuccess("User Signed Up Successfully");
         navigate("/");
         console.log(result);
+
       });
     } catch (error) {
       toastError(error.message);
       event.preventDefault(false);
+      console.log(error)
     }
   };
 

@@ -86,7 +86,7 @@ const Header = () => {
             onClick={() => navigate("/news")}
           >
             <IconButton color="inherit">
-              <Badge badgeContent={news_list ? news_list.length : 0} color='primary'>
+              <Badge badgeContent={news_list ? news_list?.length : 0} color='primary'>
                 <PiNewspaperClippingBold className="text-[1.4rem]" />
               </Badge>
             </IconButton>
