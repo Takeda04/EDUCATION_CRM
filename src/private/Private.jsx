@@ -2,8 +2,11 @@ import { Navigate } from "react-router-dom";
 
 const Private = ({ children }) => {
   const ACCESS_TOKEN = localStorage.getItem("accessToken");
-  // const userRole = localStorage.getItem("userRole");
+  const userRole = localStorage.getItem("userRole");
   if (ACCESS_TOKEN?.length > 900) {
+    // if(userRole === 'student'){
+    //   return 
+    // }
       return children;
   }
 

@@ -19,7 +19,6 @@ import {
 } from "@mui/material";
 
 //Import Assests
-
 import { MdOutlineClass, MdSettings } from "react-icons/md";
 import {  BiLogOut, BiUser } from "react-icons/bi";
 import { PiStudentBold, PiNewspaperClippingBold} from "react-icons/pi"
@@ -50,7 +49,7 @@ const Header = () => {
       <HtmlHeader className="justify-between">
         <Link to={"/"} className="inline-flex items-center gap-1">
           <h1 className={`text-[1.8em] text-black font-bold`}>
-            UZB<span className="text-blue-500">EDU</span>
+            Ed<span className="text-blue-500">Uzbekistan</span>
           </h1>
         </Link>
         <Section className="flex items-center gap-5">
@@ -115,7 +114,7 @@ const Header = () => {
               height: 60
             }}
               alt="Ava"
-              src="https://trolologuy.github.io/me.png"
+              src="../../assets/images/me.jpeg"
               className="border-2"
             />
           </IconButton>

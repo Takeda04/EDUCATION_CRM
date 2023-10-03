@@ -4,7 +4,7 @@ export const news_list = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}]
 const News = () => {
 
   return (
-    <main className="w-full h-full flex flex-col py-2 gap-2 rounded-lg  overflow-y-scroll">
+    <main className="w-full h-full flex flex-col py-2 gap-2 rounded-lg items-center justify-center overflow-y-scroll">
       <NewsCard/>
     </main>
   )

@@ -11,7 +11,7 @@ import {
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const TeacherCard = ({ list }) => {
+const TeacherCard = ({id}) => {
   const [{ like, dislike }, setActions] = useState({
     like: false,
     dislike: false,
@@ -19,7 +19,7 @@ const TeacherCard = ({ list }) => {
 
 
   return (
-    <Link>
+    <Link to={`/teacher/${id}`}>
     <Card className="border w-full min-h-[11.5em] h-auto flex flex-col gap-2 items-between rounded-lg p-5 relative">
       <Box className="flex items-center gap-2">
         <IconButton size="small" className="">
