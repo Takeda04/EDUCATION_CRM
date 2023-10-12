@@ -26,7 +26,7 @@ const Sidebar = () => {
   ];
 
   return (
-    <main className="w-[350px] h-full flex flex-col items-center justify-center px-2 gap-y-4 bg-blue-200 overflow-y-scroll">
+    <main className="w-[350px] h-screen flex flex-col items-center gap-y-2 bg-blue-200 overflow-y-scroll">
       {sidebar_list?.map(({title}) => (
         <SidebarCard title={title}/>
       ))}

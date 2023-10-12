@@ -10,7 +10,7 @@ const Layout = ({ children }) => {
       <Section className="w-full h-screen flex flex-col items-center justify-start">
         <Header />
         <Box className="w-full h-screen gap-x-2 flex items-center justify-between pr-[2em] bg-blue-100">
-          <Sidebar />
+          <Sidebar className="h-screen" />
           <Box className="w-full">
             <Box className="h-screen flex items-center justify-center">
               {children}
